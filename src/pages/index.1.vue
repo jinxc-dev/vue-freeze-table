@@ -1,18 +1,24 @@
 <template>
 	<q-page class="flex flex-center">
-		<freeze-table
-			row-key="name"
-			title="This is Freeze Table"
+		<q-table
+			title="Table Title"
 			:data="tableData"
 			:columns="columns"
+			row-key="name"
 			tableClass="fix-height"
 			class="fix-width"
-			freeze_cols="2"
-			freeze_backColor="#aaaaaa"
-			freeze_color = "white"
-			idx="freeze"
+			:@click="event1"
 		>
-		</freeze-table>
+			<q-td slot="body-cell-desc" class='test_zxh' slot-scope="props" :props="props">
+				{{ props.value }}
+			</q-td>
+			<q-td slot="body-cell-fat" slot-scope="props" :props="props">
+				{{ props.value }}
+			</q-td>
+			
+		<!-- <template slot="top-middle" slot-scope="props" :class="tableClass">			
+		</template> -->
+		</q-table>
 		
 	</q-page>
 
@@ -23,23 +29,19 @@
 		height: 200px;
 	}
 	.fix-width {
-		width: 700px;
+		width: 500px;
 	}
 </style>
 
-<script type="text/javascript">
+<script>
 
 import tableData from 'assets/table-data'
-import FreezeTable from 'components/FreezeTable'
-
 
 export default {
-	inheritAttrs: true,
 	data() {
 		
 		return {
 			tableData,
-			title: "Title",
 			columns: [
 				{
 					name: 'desc',
@@ -56,7 +58,13 @@ export default {
 				{ name: 'sodium', label: 'Sodium (mg)', field: 'sodium' },
 				{ name: 'calcium', label: 'Calcium (%)', field: 'calcium', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
 				{ name: 'iron', label: 'Iron (%)', field: 'iron', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) }
-			]
+			],
+
+			scrollx : function(e){
+				console.log('table-scroll');
+				return;
+			}
+
 
 		}
 	},
@@ -74,9 +82,6 @@ export default {
 			return;
 		}
 	},
-
-// mixin:[FreezeTable],
-components: { FreezeTable },
 
 	mounted () {
 		// this.target = this.$el.childNodes;

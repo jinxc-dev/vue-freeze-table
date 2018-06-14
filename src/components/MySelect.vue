@@ -1,6 +1,6 @@
 
 		<template>
-		<q-select :value="value" :options="options" @change="handleChange" filter filter-placeholder="select"/>
+		  <q-select :value="value" :options="options" @change="handleChange" filter filter-placeholder="select"/>
 		</template>
 
 <script>
