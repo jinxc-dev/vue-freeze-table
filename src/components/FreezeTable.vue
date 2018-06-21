@@ -1,9 +1,13 @@
 
 
 <template>
-	<q-table v-bind="$props" :tableClass="setClass">
 
+	<q-table v-bind="$props" :tableClass="setClass">
+		<q-resize-observable @resize="onResize" >
+			</q-resize-observable>
+		<q-scroll-observable @scroll="onResize" />
 	</q-table>
+
 </template>
 
 <script type="text/javascript">
@@ -33,9 +37,11 @@ export default {
 
 	},
 
+
 	methods: {
-		ttt: function() {
-			// alert(this.test1);
+				
+		onResize(size) {
+			alert('resize');
 		},
 
 		createFreeze: function() {
@@ -134,6 +140,10 @@ export default {
 		},
 		translate: function(x, y) {
 			return 'translate(' + x + 'px, ' + y + 'px)';
+		},
+
+		created() {
+			alert('xxxxxx');
 		}
 	},
 

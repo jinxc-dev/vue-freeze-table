@@ -7,7 +7,7 @@
 			:columns="columns"
 			tableClass="fix-height"
 			class="fix-width"
-			freeze_cols="2"
+			freeze_cols="3"
 			freeze_backColor="#aaaaaa"
 			freeze_color = "white"
 			idx="freeze"
